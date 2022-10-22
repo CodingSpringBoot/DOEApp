@@ -4,10 +4,10 @@
     package="in.nic.edudel.doe">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<!--    <uses-permission android:name="android.permission.WAKE_LOCK" />-->
+   <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -42,8 +42,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-
-        <!-- tools:node="replace" -->
+        
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyBc6QuFHLvH5B0OroKSvALzLcmbind80Pw" />
@@ -181,12 +180,7 @@
         <activity
             android:name=".activities.DoeNotification"
             android:label="Notifications"
-            android:parentActivityName=".activities.MainActivity">
-            <intent-filter>
-                <action android:name="in.nic.edudel.doe_TARGET_NOTIFICATION" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+            android:parentActivityName=".activities.MainActivity"/>
         </activity>
         <activity
             android:name=".principal.activities.PrincipalMain"
@@ -323,10 +317,6 @@
             android:label="@string/title_activity_students_detail_repot"
             android:screenOrientation="portrait"
             android:parentActivityName=".principal.activities.PrincipalMain"></activity>
-
-     <!--   <uses-library android:name="org.apache.http.legacy"
-            android:usesCleartextTraffic="true"
-            android:required="false"/>-->
     </application>
 
 </manifest>
