@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="in.nic.edudel.doe">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<!--    <uses-permission android:name="android.permission.WAKE_LOCK" />-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+
+    <application xmlns:tools="http://schemas.android.com/tools"
+        android:name=".utils.EnableMultiDex"
+        android:allowBackup="true"
+        android:icon="@mipmap/app_logo"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/app_logo"
+        android:supportsRtl="true"
+
+        android:networkSecurityConfig="@xml/network_security_config"
+
+        android:theme="@style/AppTheme"
+        android:screenOrientation="portrait">
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <!-- tools:node="replace" -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBc6QuFHLvH5B0OroKSvALzLcmbind80Pw" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/push_notification" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
+
+        <service
+            android:name="com.google.android.gms.measurement.AppMeasurementService"
+            android:enabled="true"
+            android:exported="false" />
+        <service android:name=".services.FireBaseNotification">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.measurement.UPLOAD" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".utils.SplashScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activities.Login"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activities.DELEHome"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.StudentAttendance"
+            android:label="Student Attendance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.TakeAttendance"
+            android:label="Take Attendance"
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.RegisterTeacher"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activities.StudentReports"
+            android:label="Reports"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.Attendance"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.TeacherProfile"
+            android:label="Profile"
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.AttendanceGraph"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.DoeSyllabus"
+            android:label=""
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.Feedback"
+            android:label=""
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activities.Hos_Registration"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activities.HosLogin"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".activities.TeacherClasses"
+            android:label="My Classes" />
+        <activity
+            android:name=".activities.ClassStudentDetails"
+            android:label=""
+            android:parentActivityName=".activities.TeacherClasses" />
+        <activity
+            android:name=".activities.AboutDoe"
+            android:label="Doe"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.AboutUs"
+            android:label="About Us"
+            android:parentActivityName=".activities.AboutDoe" />
+        <activity
+            android:name=".activities.TeacherHelp"
+            android:label="Help"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.TeacherFAQ"
+            android:label="FAQ"
+            android:parentActivityName=".activities.TeacherHelp" />
+        <activity
+            android:name=".activities.ContactUs"
+            android:label="Contact Us"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.StudentHomeWork"
+            android:label="Home Work"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.DoeNotification"
+            android:label="Notifications"
+            android:parentActivityName=".activities.MainActivity">
+            <intent-filter>
+                <action android:name="in.nic.edudel.doe_TARGET_NOTIFICATION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".principal.activities.PrincipalMain"
+            android:label="@string/title_activity_principal_main"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".principal.activities.PrincipalProfile"
+            android:label="Profile"
+            android:parentActivityName=".principal.activities.PrincipalMain"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".principal.activities.Employee_Attendance"
+            android:parentActivityName=".principal.activities.PrincipalMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".principal.activities.StaffAttendance"
+            android:parentActivityName=".principal.activities.Employee_Attendance"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".principal.activities.ClassWiseTimeTable"
+            android:label="Class Time Table"
+            android:parentActivityName=".principal.activities.PrincipalMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".principal.activities.AddTimeTable"
+            android:parentActivityName=".principal.activities.ClassWiseTimeTable"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".principal.activities.NoticeBoard"
+            android:parentActivityName=".principal.activities.PrincipalMain"
+            android:screenOrientation="portrait" />
+        <!--android:screenOrientation="portrait" />-->
+        <activity
+            android:name=".principal.activities.Employee_Attendance_Report"
+            android:parentActivityName=".principal.activities.PrincipalMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".principal.activities.TeacherWiseTimeTable"
+            android:parentActivityName=".principal.activities.PrincipalMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".principal.activities.NoticesList"
+            android:parentActivityName=".principal.activities.NoticeBoard"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.TeacherSubjects"
+            android:label="Subjects"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.NoticeBoardReport"
+            android:label="School Notices"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".principal.activities.TeacherArrangement"
+            android:label="Teacher Arrangement"
+            android:parentActivityName=".principal.activities.PrincipalMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.AllotedClasses"
+            android:label="Alloted Classes"
+            android:parentActivityName=".activities.TeacherClasses"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".principal.activities.DeRegisterTeacher"
+            android:label="DeRegister Teacher"
+            android:parentActivityName=".principal.activities.PrincipalMain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.StudentDetailAttendance"
+            android:label=""
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.EditAttendance"
+            android:label="Edit Attendance"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".admin.activities.AdminHome"
+            android:label="Admin Home"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".admin.activities.AdminLogin"
+            android:label="Admin Login"
+            android:parentActivityName=".activities.DELEHome"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".admin.activities.ZoneAdmin"
+            android:label="Zone Admin"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".admin.activities.DistrictAdmin"
+            android:label="District Admin DOE"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".admin.activities.SchholReport"
+            android:label="Zone DOE"
+            android:parentActivityName=".admin.activities.ZoneAdmin"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.TimeTable"
+            android:label="Time Table"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.PrivacyPolicy"
+            android:label="Privacy Policy"
+            android:parentActivityName=".activities.AboutDoe" />
+        <activity
+            android:name=".activities.TermsConditions"
+            android:label="Terms and Conditions"
+            android:parentActivityName=".activities.AboutDoe" />
+        <activity
+            android:name=".admin.activities.ReportsList"
+            android:label="District Report"
+            android:parentActivityName=".admin.activities.AdminHome"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".admin.activities.SchoolList"
+            android:label="Schools Report"
+            android:parentActivityName=".admin.activities.AdminHome"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.GuestTeacherSettings"
+            android:label="Settings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.EditClasses"
+            android:label="Edit Classes"
+            android:parentActivityName=".activities.TeacherClasses"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".principal.activities.StudentsDetailRepot"
+            android:label="@string/title_activity_students_detail_repot"
+            android:screenOrientation="portrait"
+            android:parentActivityName=".principal.activities.PrincipalMain"></activity>
+
+     <!--   <uses-library android:name="org.apache.http.legacy"
+            android:usesCleartextTraffic="true"
+            android:required="false"/>-->
+    </application>
+
+</manifest>
